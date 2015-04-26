@@ -5,10 +5,10 @@ from modules.quotes import QuotesView
 
 app = Flask(__name__)
 
-print "Register QuotesView"
+print ("Register QuotesView")
 QuotesView.register(app)
 
-print "Register AnotherView"
+print ("Register AnotherView")
 AnotherView.register(app)
 
 if __name__ == '__main__':
