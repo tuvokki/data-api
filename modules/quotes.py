@@ -1,20 +1,27 @@
 from modules import *
 from random import choice
+from pymongo import MongoClient
 
 class QuotesView(FlaskView):
-  # we'll make a list to hold some quotes for our app
-  quotes = [
-    "A noble spirit embiggens the smallest man! ~ Jebediah Springfield",
-    "If there is a way to do it better... find it. ~ Thomas Edison",
-    "No one knows what he can do till he tries. ~ Publilius Syrus"
-  ]
+  # Get a reference to the MongoDB
+  client = MongoClient('mongodb://localhost:27017/')
+  db = client['quotes']
+  collection = db['simple']
 
   def index(self):
-    return "<br>".join(self.quotes)
+    print ("Getting quotes for you ...")
+    # print (self.db.simple.find())
+    quotes = self.db.simple.find()
+    returnval = "<h1>"
+    for quote in quotes:
+      for kk, vv in quote.iteritems():
+        returnval = kk, ': ', vv
+    return returnval
 
-  def get(self, id):
-    id = int(id)
-    print "This is a test, smile ", id
+  def get(self, quote_id):
+    # quote_id = int(quote_id)
+    print "This is a test, smile ", quote_id
+    document = client.db.collection.find_one({'_id': ObjectId(quote_id)})
     if id < len(self.quotes) - 1:
       return self.quotes[id]
     else:
