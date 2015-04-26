@@ -11,8 +11,9 @@ A mongo db that is addressable from your application
     clone https://github.com/tuvokki/data-api.git
     cd data-api
     virtualenv dataapienv
-    dataapienv/bin/pip install flask-classy
     dataapienv/bin/pip install flask
+    dataapienv/bin/pip install flask-classy
+    dataapienv/bin/pip install pymongo
     chmod +x app.py
 
 ###Usage (in debug mode)
