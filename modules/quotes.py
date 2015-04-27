@@ -1,6 +1,7 @@
 from modules import *
 from random import choice
 from pymongo import MongoClient
+from bson.json_util import dumps
 
 class QuotesView(FlaskView):
   # Get a reference to the MongoDB
@@ -10,13 +11,10 @@ class QuotesView(FlaskView):
 
   def index(self):
     print ("Getting quotes for you ...")
-    # print (self.db.simple.find())
     quotes = self.db.simple.find()
-    returnval = "<h1>"
-    for quote in quotes:
-      for kk, vv in quote.iteritems():
-        returnval = kk, ': ', vv
-    return returnval
+    # dump the quotes cursor to json
+    # return dumps(quotes)
+    return jsonify(quotes=dumps(quotes))
 
   def get(self, quote_id):
     # quote_id = int(quote_id)

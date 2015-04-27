@@ -1,5 +1,5 @@
 #!dataapienv/bin/python
-from flask import Flask
+from flask import Flask, jsonify
 from modules.another import AnotherView
 from modules.quotes import QuotesView
 
