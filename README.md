@@ -27,6 +27,7 @@ A mongo db that is addressable from your application
 
 ###Usage (behind nginx)
 Install uWsgi
+
   dataapienv/bin/pip install uwsgi
   
 Add the following to your nginx conf:
