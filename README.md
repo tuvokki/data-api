@@ -26,6 +26,9 @@ A mongo db that is addressable from your application
 	Register AnotherView
 
 ###Usage (behind nginx)
+Install uWsgi
+  dataapienv/bin/pip install uwsgi
+  
 Add the following to your nginx conf:
 
 	upstream quotes_api {
