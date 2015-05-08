@@ -25,6 +25,7 @@ on windows these command will be: `dataapienv\Scripts\pip.exe install flask` etc
 	* Restarting with reloader
 	Register QuotesView
 	Register AnotherView
+on windows this wil be: `dataapienv\Scripts\python.exe app.py`
 
 ###Usage (behind nginx)
 Install uWsgi
