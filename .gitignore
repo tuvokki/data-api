@@ -18,3 +18,10 @@ pip-selfcheck.json
 *.sublime-project
 *.sublime-workspace
 
+# the build doc
+_build
+
+# node modules
+node_modules
+# server to serve the docs
+server.js
