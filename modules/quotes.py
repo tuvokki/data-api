@@ -18,7 +18,7 @@ class QuotesView(FlaskView):
 
   def get(self, quote_id):
     # quote_id = int(quote_id)
-    print "This is a test, smile ", quote_id
+    print ("This is a test, smile ", quote_id)
     document = client.db.collection.find_one({'_id': ObjectId(quote_id)})
     if id < len(self.quotes) - 1:
       return self.quotes[id]
