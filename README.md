@@ -15,6 +15,7 @@ A mongo db that is addressable from your application
     dataapienv/bin/pip install flask-classy
     dataapienv/bin/pip install pymongo
     chmod +x app.py
+on windows these command will be: `dataapienv\Scripts\pip.exe install flask` etc.
 
 ###Usage (in debug mode)
     [ ~/development/projects/data-api]% ]./app.py
