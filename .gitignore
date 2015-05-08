@@ -1,8 +1,12 @@
 # Virtualenv
 .Python
 bin
+Scripts
 lib
+Lib
 include
+Include
+pip-selfcheck.json
 
 # Mac OS X custom attribute files
 .DS_Store
@@ -13,3 +17,4 @@ include
 #Sublime
 *.sublime-project
 *.sublime-workspace
+
