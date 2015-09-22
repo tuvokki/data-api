@@ -1,9 +1,11 @@
 # The data API
 
+Branch [master](https://github.com/tuvokki/data-api) [![Build Status](https://travis-ci.org/tuvokki/data-api.svg)](https://travis-ci.org/tuvokki/data-api)
 ## Description
 The data api is as generic as its name does suspect. You can do all sorts of things with it.
 
 ###Prerequisites
+Python 2.7
 A mongo db that is addressable from your application
 
 ###Install
