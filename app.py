@@ -16,5 +16,6 @@ AnotherView.register(app)
 def catch_all(path):
     return 'You want path: %s' % path
 
+# Running with debug on
 if __name__ == '__main__':
   app.run(debug=True)
