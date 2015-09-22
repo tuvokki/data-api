@@ -75,7 +75,7 @@ class TestMongoInsertFunctions(unittest.TestCase):
     ]
     for x in quotes:
       for kk, vv in x.iteritems():
-        print kk, ': ', vv
+        print (kk, ': ', vv)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestMongoInsertFunctions)
 unittest.TextTestRunner(verbosity=2).run(suite)
