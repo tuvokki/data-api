@@ -21,8 +21,10 @@ class SQLLiteQuotesView(FlaskView):
         format(tn=self.quotes_table))
     quotes = c.fetchall()
     # dump the quotes cursor to json
-    # return dumps(quotes)
-    return jsonify(quotes=dumps(quotes))
+    result = []
+    for quote in quotes:
+      result.append({'text': quote[1], 'saying': quote[2], 'id': quote[0]})
+    return jsonify(quotes=dumps(result))
 
   def get(self, quote_id):
     # quote_id = int(quote_id)
@@ -31,8 +33,8 @@ class SQLLiteQuotesView(FlaskView):
     c = conn.cursor()
     c.execute('SELECT * FROM {tn} WHERE {cn}={id}'.\
             format(tn=self.quotes_table, cn=self.index_name, id=quote_id))
-    quotes = c.fetchall()
-    return jsonify(quote=dumps(quotes[0]))
+    quote = c.fetchone()
+    return jsonify(quote=dumps({'text': quote[1], 'saying': quote[2], 'id': quote[0]}))
 
   # The route decorator takes exactly the same parameters as Flask's
   # app.route decorator, so you should feel right at home adding custom
