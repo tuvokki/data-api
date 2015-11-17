@@ -16,7 +16,7 @@ class TestSQLiteInsertFunctions(unittest.TestCase):
     c = conn.cursor()
 
     # Creating a new SQLite table with 2 columns
-    c.execute('CREATE TABLE {tn} (id integer primary key, {sf} {sft}, {wf} {wft})'\
+    c.execute('CREATE TABLE IF NOT EXISTS {tn} (id integer primary key, {sf} {sft}, {wf} {wft})'\
             .format(tn=quotes_table, sf=saying_field, sft=saying_field_type, wf=who_field, wft=who_field_type))
 
     # Committing changes
