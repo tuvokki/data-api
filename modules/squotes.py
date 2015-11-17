@@ -1,6 +1,6 @@
 from modules import *
 import os
-from random import choice
+from random import randrange
 import sqlite3
 from bson.json_util import dumps
 
@@ -41,4 +41,12 @@ class SQuotesView(FlaskView):
   # routes to any views you create.
   @route('/word_bacon/') #<--- Adding route
   def random(self):
-    return choice(self.quotes)
+    print ("Stirring up the frying pan to bake some bacon")
+    conn = sqlite3.connect(self.sqlite_file)
+    c = conn.cursor()
+    c.execute('SELECT * FROM {tn}'.\
+        format(tn=self.quotes_table))
+    quotes = c.fetchall()
+    random_index = randrange(len(quotes))
+    quote = quotes[random_index]
+    return jsonify(quote=dumps({'text': quote[1], 'saying': quote[2], 'id': quote[0]}))
