@@ -7,6 +7,7 @@ The data api is as generic as its name does suspect. You can do all sorts of thi
 ###Prerequisites
 * Python 2.7 (might even run on 3.x but for now it's not supported)
 * A mongo db that is addressable from your application
+* if no mongo is available you can use sqlite
 
 ###Install
 
@@ -64,11 +65,11 @@ Now the application is available on the following url:
 
 `http://your.host.org/quotes/`
 
-###SQLLite
-After running the SQL Lite test you can use this app without any backend. Request the `http://your.host.org/sqllitequotes/` and you'll be fine.
+###SQLite
+After running the SQL Lite test you can use this app without any backend. Request the `http://your.host.org/squotes/` and you'll be fine.
 
 ###Todo's:
 * Abstract Mongo access
 * Config via file or env variables
 * Functionality that is actually usefull
-* clean up the SQLLite implementation
+* clean up the SQLite implementation
