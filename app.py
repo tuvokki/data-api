@@ -4,7 +4,19 @@ from modules.another import AnotherView
 from modules.quotes import QuotesView
 from modules.squotes import SQuotesView
 
-app = Flask(__name__)
+# app = Flask(__name__)
+class CustomFlask(Flask):
+    jinja_options = Flask.jinja_options.copy()
+    jinja_options.update(dict(
+        block_start_string='<%',    # used to be: {%
+        block_end_string='%>',      # used to be: %}
+        variable_start_string='%%', # used to be: {{
+        variable_end_string='%%',   # used to be: }}
+        comment_start_string='<#',  # used to be: {#
+        comment_end_string='#>',    # used to be: #}
+    ))
+
+app = CustomFlask(__name__)
 
 print ("Register QuotesView")
 QuotesView.register(app)
