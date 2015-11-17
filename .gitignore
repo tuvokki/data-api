@@ -25,3 +25,4 @@ _build
 node_modules
 # server to serve the docs
 server.js
+*.sqlite
