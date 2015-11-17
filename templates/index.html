@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Say somthing</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <# this is a jinja2 comment #>
+        <link rel="shortcut icon" href="%% url_for('static', filename='flask.png') %%">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+    </head>
+    <body>
+        <div ng-app="myApp">
+          <div ui-view></div>
+          <!-- We'll also add some navigation: -->
+          <a ui-sref="state1">State 1</a>
+          <a ui-sref="state2">State 2</a>
+        </div>
+    </body>
+    <script type="text/javascript" src="%% url_for('static', filename='app.js') %%"></script>
+</html>

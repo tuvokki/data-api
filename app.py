@@ -1,5 +1,6 @@
 #!dataapienv/bin/python
 from flask import Flask, jsonify
+from flask import render_template
 from modules.another import AnotherView
 from modules.quotes import QuotesView
 from modules.squotes import SQuotesView
@@ -27,7 +28,14 @@ SQuotesView.register(app)
 print ("Register AnotherView")
 AnotherView.register(app)
 
-@app.route('/', defaults={'path': ''})
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/partials/<path:path>')
+def partials(path):
+    return render_template('/partials/%s' % path)
+
 @app.route('/<path:path>')
 def catch_all(path):
     return 'You want path: %s' % path
