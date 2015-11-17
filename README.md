@@ -5,8 +5,8 @@ Branch [master](https://github.com/tuvokki/data-api) [![Build Status](https://tr
 The data api is as generic as its name does suspect. You can do all sorts of things with it.
 
 ###Prerequisites
-Python 2.7
-A mongo db that is addressable from your application
+* Python 2.7 (might even run on 3.x but for now it's not supported)
+* A mongo db that is addressable from your application
 
 ###Install
 
