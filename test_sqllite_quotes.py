@@ -4,7 +4,7 @@ from random import choice
 import sqlite3
 from bson.json_util import dumps
 
-sqlite_file = 'quotes_db.sqlite'
+sqlite_file = 'quotes_test_db.sqlite'
 quotes_table = 'quotes'
 saying_field = 'saying'
 who_field = 'who'
