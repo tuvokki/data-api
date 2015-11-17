@@ -29,6 +29,11 @@ on windows these command will be: `dataapienv\Scripts\pip.exe install flask` etc
 	Register AnotherView
 on windows this wil be: `dataapienv\Scripts\python.exe app.py`
 
+###Tests
+The tests are contained in their own suites in order to isolate them (especially handy when you do not have a mongo running and you only want to run the sqlite tests). The can be started like this:
+
+    python test\test_create_sqlite_db.py
+
 ###Usage (behind nginx)
 Install uWsgi
 
