@@ -3,17 +3,54 @@
     <head>
         <title>Say somthing</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <# this is a jinja2 comment #>
         <link rel="shortcut icon" href="%% url_for('static', filename='flask.png') %%">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+        
+        <script type="text/javascript" src="%% url_for('static', filename='ui-bootstrap-tpls-0.14.3.min.js') %%"></script>
     </head>
     <body>
         <div ng-app="myApp">
+          <!-- We'll first add some navigation: -->
+          <nav class="navbar navbar-default">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">The future of Angular.js</a>
+              </div>
+              <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a ui-sref="home">Home</a></li>
+                  <li><a ui-sref="state1">Example 1.4</a></li>
+                  <li><a ui-sref="state2">Example 1.5</a></li>
+<!--                   <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#">Action</a></li>
+                      <li><a href="#">Another action</a></li>
+                      <li><a href="#">Something else here</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li class="dropdown-header">Nav header</li>
+                      <li><a href="#">Separated link</a></li>
+                      <li><a href="#">One more separated link</a></li>
+                    </ul>
+                  </li>
+ -->                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </nav>
+          
+          
           <div ui-view></div>
-          <!-- We'll also add some navigation: -->
-          <a ui-sref="state1">State 1</a>
-          <a ui-sref="state2">State 2</a>
         </div>
     </body>
     <script type="text/javascript" src="%% url_for('static', filename='app.js') %%"></script>
