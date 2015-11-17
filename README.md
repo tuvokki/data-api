@@ -64,7 +64,11 @@ Now the application is available on the following url:
 
 `http://your.host.org/quotes/`
 
+###SQLLite
+After running the SQL Lite test you can use this app without any backend. Request the `http://your.host.org/sqllitequotes/` and you'll be fine.
+
 ###Todo's:
 * Abstract Mongo access
 * Config via file or env variables
 * Functionality that is actually usefull
+* clean up the SQLLite implementation
