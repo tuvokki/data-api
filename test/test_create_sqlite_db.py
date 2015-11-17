@@ -9,13 +9,14 @@ class TestSQLiteInsertFunctions(unittest.TestCase):
     saying_field_type = 'TEXT'
     who_field = 'who'
     who_field_type = 'TEXT'
+    index_name = 'id'
 
     # Connecting to the database file
     conn = sqlite3.connect(sqlite_file)
     c = conn.cursor()
 
     # Creating a new SQLite table with 2 columns
-    c.execute('CREATE TABLE {tn} ({sf} {sft}, {wf} {wft})'\
+    c.execute('CREATE TABLE {tn} (id integer primary key, {sf} {sft}, {wf} {wft})'\
             .format(tn=quotes_table, sf=saying_field, sft=saying_field_type, wf=who_field, wft=who_field_type))
 
     # Committing changes

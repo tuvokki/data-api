@@ -1,12 +1,12 @@
 #!dataapienv/bin/python
 from flask import Flask, jsonify
 from modules.another import AnotherView
-from modules.quotes import QuotesView
+from modules.sqllitequotes import SQLLiteQuotesView
 
 app = Flask(__name__)
 
 print ("Register QuotesView")
-QuotesView.register(app)
+SQLLiteQuotesView.register(app)
 
 print ("Register AnotherView")
 AnotherView.register(app)
