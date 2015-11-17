@@ -3,7 +3,7 @@ import unittest
 
 class TestSQLiteInsertFunctions(unittest.TestCase):
   def testConn(self):
-    sqlite_file = 'quotes_db.sqlite'
+    sqlite_file = 'quotes_test_db.sqlite'
     quotes_table = 'quotes'
     saying_field = 'saying'
     saying_field_type = 'TEXT'
