@@ -1,9 +1,9 @@
 #!dataapienv/bin/python
 from flask import Flask, render_template
-from modules.another import AnotherView
-from modules.quotes import QuotesView
+# from modules.another import AnotherView
+# from modules.quotes import QuotesView
 from modules.squotes import SQuotesView
-
+from modules.slides import SlidesView
 
 # app = Flask(__name__)
 class CustomFlask(Flask):
@@ -19,15 +19,17 @@ class CustomFlask(Flask):
 
 app = CustomFlask(__name__)
 
-print("Register QuotesView")
-QuotesView.register(app)
+# print("Register QuotesView")
+# QuotesView.register(app)
 
 print("Register SQuotesView")
 SQuotesView.register(app)
 
-print("Register AnotherView")
-AnotherView.register(app)
+# print("Register AnotherView")
+# AnotherView.register(app)
 
+print("Register SlidesView")
+SlidesView.register(app)
 
 @app.route('/')
 def index():
