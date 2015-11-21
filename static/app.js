@@ -15,38 +15,7 @@ myApp.factory('Slides', function($http) {
 
 myApp.component('gridshow', {
   bindings: {
-    slides: '='
-  },
-  controller: function($scope) {
-    var self = this;
-    this.rows = [];
-    console.log('test', this);
-
-    $scope.$watch(angular.bind(this, function () { 
-        if (this.slides) {
-          this.rows = [];
-          var tmpObject = [];
-          var counter = 1;
-          for (var i = 0; i < this.slides.length; i++) {
-            tmpObject.push(this.slides[i].image);
-            if (counter++ == 4){
-              self.rows.push({
-                title: 'Row ' + this.rows.length,
-                images: tmpObject
-              });
-              counter = 1;
-              tmpObject = [];
-            }
-          };
-          self.rows.push({
-                title: 'Row ' + this.rows.length,
-                images: tmpObject
-              });
-        }
-        return this.slides;
-    }), function(value) {
-        console.log('Name change to ' + value);
-    });
+    rows: '='
   },
   controllerAs: 'grid',
   templateUrl: 'partials/showgrid.html'
@@ -79,6 +48,10 @@ myApp.component('counter', {
   }
 });
 
+myApp.component('navigation', {
+  templateUrl: 'partials/navigation.html'
+});
+
 myApp.controller('CarouselDemoCtrl', function($log, Slides) {
   var self = this;
   this.myInterval = 0; //disable autoscrolling
@@ -90,6 +63,23 @@ myApp.controller('CarouselDemoCtrl', function($log, Slides) {
   }, function errorCallback(response) {
     $log.error('no slides: ', response)
   });
+});
+
+myApp.controller('ModalInstanceCtrl', function ($uibModalInstance, items) {
+  var self = this;
+
+  self.items = items;
+  self.selected = {
+    item: self.items[0]
+  };
+
+  self.ok = function () {
+    $uibModalInstance.close(self.selected.item);
+  };
+
+  self.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 });
 
 myApp.config(function($stateProvider, $urlRouterProvider) {
@@ -108,18 +98,35 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
       url: "/examples",
       controller: function($log, Slides) {
         var self = this;
-        self.count = 8;
-        self.whatever = "People, this is a test " + self.count;
+
         Slides.getSlides().then(function(slides) {
-            //$log.debug(slides.data.slides);
-            self.slidelist = slides.data.slides;
-          }, function errorCallback(response) {
-            $log.error('no slides: ', response)
+          var slidelist = slides.data.slides;
+
+          self.rows = [];
+          var tmpObject = [];
+          var counter = 1;
+          for (var i = 0; i < slidelist.length; i++) {
+            tmpObject.push(slidelist[i].image);
+            if (counter++ == 4){
+              self.rows.push({
+                title: 'Row ' + self.rows.length,
+                images: tmpObject
+              });
+              counter = 1;
+              tmpObject = [];
+            }
+          };
+          self.rows.push({
+            title: 'Row ' + self.rows.length,
+            images: tmpObject
           });
+        }, function errorCallback(response) {
+          $log.error('no slides: ', response)
+        });
       },
       controllerAs: 'examples',
       templateUrl: "partials/examples.html"
-    // })
+    })
     // .state('examples.list', {
     //   url: "/list",
     //   templateUrl: "partials/examples.list.html",
@@ -127,13 +134,37 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
     //     $scope.items = ["A", "List", "Of", "Items"];
     //   }
     // })
-    // .state('state2', {
-    //   url: "/state2",
-    //   controller: function() {
-    //     this.whatever = "People, this is a tosti";
-    //   },
-    //   controllerAs: 'test',
-    //   templateUrl: "partials/state2.html"
+    .state('modalz', {
+      url: "/modalz",
+      controller: function($uibModal, $log) {
+        var self = this;
+        this.whatever = "People, this is a " + this.selected + " tosti";
+        this.items = ['item1', 'item2', 'item3'];
+        self.openmdl = function openmdl(size) {
+
+          var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'partials/modal.html',
+            controller: 'ModalInstanceCtrl',
+            controllerAs: 'modal',
+            size: size,
+            resolve: {
+              items: function () {
+                return ['item1', 'item2', 'item3'];
+              }
+            }
+          });
+
+          modalInstance.result.then(function (selectedItem) {
+            $log.debug('returned ', selectedItem);
+            self.selected = selectedItem;
+          }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+          });
+        };
+      },
+      controllerAs: 'test',
+      templateUrl: "partials/modalz.html"
     // })
     // .state('state2.list', {
     //   url: "/list",
